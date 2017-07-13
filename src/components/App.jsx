@@ -17,10 +17,27 @@ class App extends React.Component {
     super(props);
 
     this.handleVideoClick = this.handleVideoClick.bind(this);
+    
+    var initialVideo = {
+      kind: '',
+      etag: '',
+      id: {
+        kind: '',
+        videoId: 'hello'
+      },
+      snippet: {
+        publishedAt: '',
+        channelId: '',
+        title: '',
+        description: '',
+      },
+      channelTitle: '',
+      liveBroadcastContent: ''
+    };
 
     this.state = {
-      currentVideo: window.exampleVideoData[0],
-      videoList: window.exampleVideoData
+      currentVideo: initialVideo,
+      videoList: []
     };
 
   }
@@ -28,6 +45,17 @@ class App extends React.Component {
   handleVideoClick (videoObject) {
     this.setState({
       currentVideo: videoObject
+    });
+  }
+
+  componentDidMount() {
+    this.props.searchYouTube({ query: 'SeaNanners Overwatch'}, (videoList) => { 
+
+      this.setState({
+        currentVideo: videoList[0],
+        videoList: videoList,
+      });
+
     });
   }
 
@@ -50,5 +78,5 @@ class App extends React.Component {
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.App = App;
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App syt={window.SearchYouTube}/>, document.getElementById('app'));
 

@@ -18,7 +18,7 @@ Make sure all the tests for searchYouTube are passing. You can open the tests wi
   $.ajax({
     cache: false,
     data: {
-      key: options.key,
+      key: options.key || window.YOUTUBE_API_KEY,
       q: options.query,
       maxResults: options.max,
       part: 'snippet',
