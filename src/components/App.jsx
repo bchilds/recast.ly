@@ -37,7 +37,7 @@ class App extends React.Component {
 
     this.state = {
       currentVideo: initialVideo,
-      videoList: []
+      videos: []
     };
 
   }
@@ -49,15 +49,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.props.searchYouTube({ query: 'SeaNanners Overwatch'}, (videoList) => { 
+    this.props.searchYouTube({ query: 'SeaNanners Overwatch'}, (videos) => { 
 
       this.setState({
-        currentVideo: videoList[0],
-        videoList: videoList,
+        currentVideo: videos[0],
+        videos: videos,
       });
-
-      render();
-
     });
   }
 
@@ -66,10 +63,10 @@ class App extends React.Component {
       <div>
         <Nav />
         <div className="col-md-7">
-          <VideoPlayer state={this.state}/>
+          <VideoPlayer video={this.state.currentVideo}/>
         </div>
         <div className="col-md-5">
-          <VideoList state={this.state} handler={this.handleVideoClick} />
+          <VideoList videos={this.state.videos} handler={this.handleVideoClick} />
         </div>
       </div>
     );
