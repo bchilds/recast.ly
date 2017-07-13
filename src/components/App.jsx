@@ -26,7 +26,6 @@ class App extends React.Component {
   }
 
   handleVideoClick (videoObject) {
-    debugger;
     this.setState({
       currentVideo: videoObject
     });
