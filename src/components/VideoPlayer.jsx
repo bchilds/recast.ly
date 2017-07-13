@@ -1,14 +1,16 @@
-var VideoPlayer = () => (
+var VideoPlayer = (props) => (
   <div className="video-player">
-    <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" allowFullScreen></iframe>
+    <div className="embed-responsive embed-responsive-16by9"> 
+      <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${props.state.currentVideo.id.videoId}`} allowFullScreen></iframe>
     </div>
     <div className="video-player-details">
-      <h3>Video Title</h3>
-      <div>Video Description</div>
+      <h3>{props.state.currentVideo.snippet.title}</h3>
+      <div>{props.state.currentVideo.description}</div>
     </div>
   </div>
 );
+
+
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
