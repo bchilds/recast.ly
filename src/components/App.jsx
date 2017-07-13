@@ -56,6 +56,8 @@ class App extends React.Component {
         videoList: videoList,
       });
 
+      render();
+
     });
   }
 
@@ -78,5 +80,5 @@ class App extends React.Component {
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 window.App = App;
-ReactDOM.render(<App syt={window.SearchYouTube}/>, document.getElementById('app'));
+ReactDOM.render(<App searchYouTube={window.searchYouTube}/>, document.getElementById('app'));
 
