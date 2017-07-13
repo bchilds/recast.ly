@@ -17,7 +17,7 @@ class App extends React.Component {
     super(props);
 
     this.handleVideoClick = this.handleVideoClick.bind(this);
-    
+    this.handleVideoSearch = this.handleVideoSearch.bind(this);
     var initialVideo = {
       kind: '',
       etag: '',
@@ -48,6 +48,12 @@ class App extends React.Component {
     });
   }
 
+  handleVideoSearch (videos) {
+    this.setState({
+      videos: videos
+    });
+  }
+
   componentDidMount() {
     this.props.searchYouTube({ query: 'SeaNanners Overwatch'}, (videos) => { 
 
@@ -61,7 +67,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav handler={this.handleVideoSearch}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.currentVideo}/>
         </div>

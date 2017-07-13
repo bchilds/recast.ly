@@ -20,7 +20,7 @@ Make sure all the tests for searchYouTube are passing. You can open the tests wi
     data: {
       key: options.key || window.YOUTUBE_API_KEY,
       q: options.query,
-      maxResults: options.max,
+      maxResults: options.max || 5,
       part: 'snippet',
       type: 'video',
       videoEmeddable: 'true',
